@@ -1,0 +1,77 @@
+:root {
+  /*### Primary*/
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+  /*### Neutral*/
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+@font-face {
+  font-family: "Ubuntu-Bold";
+  src: local("Ubuntu-Bold"), url("../assets/fonts/Ubuntu-Bold.ttf");
+}
+@font-face {
+  font-family: "Ubuntu-Medium";
+  src: local("Ubuntu-Medium"), url("../assets/fonts/Ubuntu-Medium.ttf");
+}
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: local("Ubuntu-Regular"), url("../assets/fonts/Ubuntu-Regular.ttf");
+}
+* {
+  font-family: Ubuntu-Regular, serif;
+  font-size: 16px;
+}
+.main {
+  display: flex;
+  width: 700px;
+  height: 500px;
+  background-color: var(--White);
+  padding: 20px;
+  border-radius: 10px;
+}
+.form-step {
+  border-radius: 10px;
+  background-color: var(--Purplish-blue);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+}
+.step {
+  color: var(--White);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.step-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: solid 1px var(--White);
+}
+.step-title {
+  color: var(--Light-gray);
+}
+.step-info {
+  color: var(--White);
+  font-family: Ubuntu-Bold, serif;
+}
+.form-input-section {
+  width: 100%;
+  height: 100%;
+}
