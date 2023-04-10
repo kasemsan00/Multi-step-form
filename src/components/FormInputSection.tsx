@@ -3,10 +3,20 @@ import SelectPlan from "@/components/SelectPlan";
 import AddOns from "@/components/AddOns";
 import Summary from "@/components/Summary";
 import ThankYou from "@/components/ThankYou";
-import { useState } from "react";
 
-export default function FormInputSection() {
-  const [step, setStep] = useState<number>(0);
+interface Props {
+  step: number;
+  setStep: (arg0: number) => void;
+}
+
+export default function FormInputSection({ step, setStep }: Props) {
+  const HandleNextStep = () => {
+    setStep(step + 1);
+  };
+  const HandleGoBack = () => {
+    setStep(step - 1);
+  };
+
   return (
     <div className="form-input-section">
       <YourInfo show={step === 1} />
@@ -15,8 +25,16 @@ export default function FormInputSection() {
       <Summary show={step === 4} />
       <ThankYou show={step === 5} />
       <div className="form-input-footer">
-        <button className="go-back-button">Go Back</button>
-        <button className="next-step-button">Next Step</button>
+        {step !== 1 && step !== 5 ? (
+          <button onClick={HandleGoBack} className="go-back-button">
+            Go Back
+          </button>
+        ) : null}
+        {step !== 5 ? (
+          <button onClick={HandleNextStep} className="next-step-button">
+            Next Step
+          </button>
+        ) : null}
       </div>
     </div>
   );

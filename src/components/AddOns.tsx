@@ -4,7 +4,7 @@ interface Props {
 
 export default function AddOns({ show }: Props) {
   return (
-    <div className="form-card" style={{ display: show ? "" : "non" }}>
+    <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Pick add-ons</div>
       <p className="form-description">
         Add-ons help enhance your gaming experience

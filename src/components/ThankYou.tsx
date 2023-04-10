@@ -6,7 +6,10 @@ interface Props {
 
 export default function ThankYou({ show }: Props) {
   return (
-    <div className="form-card middle" style={{ display: show ? "none" : "" }}>
+    <div
+      className="form-card middle"
+      style={{ display: show ? undefined : "none" }}
+    >
       <div className="thank-you-image">
         <Image
           src={require("@/assets/images/icon-thank-you.svg")}

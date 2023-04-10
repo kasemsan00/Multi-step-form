@@ -6,7 +6,7 @@ interface Props {
 
 export default function SelectPlan({ show }: Props) {
   return (
-    <div className="form-card" style={{ display: show ? "none" : "" }}>
+    <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Select your plan</div>
       <p className="form-description">
         You have the option of monthly or yearly billing

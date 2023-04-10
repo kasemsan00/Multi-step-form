@@ -4,7 +4,7 @@ interface Props {
 
 export default function Summary({ show }: Props) {
   return (
-    <div className="form-card" style={{ display: show ? "none" : "" }}>
+    <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Finishing up</div>
       <p className="form-description">
         Double-check everything looks OK before confirming

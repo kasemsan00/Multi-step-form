@@ -1,31 +1,35 @@
 import Step from "@/components/Step";
 
-export default function SidebarStep() {
+interface Props {
+  step: number;
+}
+
+export default function SidebarStep({ step }: Props) {
   return (
     <div className="form-step">
       <Step
         number={"1"}
         stepTitle={"STEP 1"}
         stepInfo={"YOUR INFO"}
-        active={true}
+        active={step === 1}
       />
       <Step
         number={"2"}
         stepTitle={"STEP 2"}
         stepInfo={"SELECT PLAN"}
-        active={false}
+        active={step === 2}
       />
       <Step
         number={"3"}
         stepTitle={"STEP 3"}
         stepInfo={"ADD-ONS"}
-        active={false}
+        active={step === 3}
       />
       <Step
-        number={"3"}
+        number={"4"}
         stepTitle={"STEP 4"}
         stepInfo={"SUMMARY"}
-        active={false}
+        active={step === 4}
       />
     </div>
   );

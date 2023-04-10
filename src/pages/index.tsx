@@ -1,8 +1,10 @@
 import Head from "next/head";
 import SidebarStep from "@/components/SidebarStep";
 import FormInputSection from "@/components/FormInputSection";
+import { useState } from "react";
 
 export default function Home() {
+  const [step, setStep] = useState<number>(1);
   return (
     <>
       <Head>
@@ -12,8 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-        <SidebarStep />
-        <FormInputSection />
+        <SidebarStep step={step} />
+        <FormInputSection step={step} setStep={setStep} />
       </main>
     </>
   );

@@ -4,7 +4,7 @@ interface Props {
 
 export default function YourInfo({ show }: Props) {
   return (
-    <div className="form-card" style={{ display: show ? "none" : "" }}>
+    <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Personal Info</div>
       <p className="form-description">
         Please provide your name, email address, and phone number
