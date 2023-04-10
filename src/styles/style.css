@@ -245,6 +245,132 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /*align-items: center;*/
   align-content: center;
+  gap: 15px;
+}
+
+/*.plan-option > ul {*/
+/*  height: 150px;*/
+/*  gap: 15px;*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: space-between;*/
+/*}*/
+/*.plan-option > ul > li {*/
+/*  padding: 20px;*/
+/*  width: 100%;*/
+/*  border-radius: 5px;*/
+/*  border: solid 1px var(--Light-gray);*/
+/*  cursor: pointer;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-between;*/
+/*}*/
+/*.plan-option > ul > li:hover {*/
+/*  border: solid 1px var(--Purplish-blue) !important;*/
+/*}*/
+/*.plan-option > ul > li:active {*/
+/*  background-color: var(--Alabaster) !important;*/
+/*}*/
+.addons-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 5px;
+  border: solid 1px var(--Light-gray);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.addons-card > input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--Purplish-blue);
+}
+.addons-detail {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.addons-title {
+  display: block;
+  font-family: Ubuntu-Bold, serif;
+}
+.addons-description {
+  display: block;
+  color: var(--Cool-gray);
+}
+.addons-price {
+  position: absolute;
+  display: flex;
+  right: 20px;
+  align-items: center;
+  color: var(--Purplish-blue);
+  font-size: 16px;
+}
+.finish-detail {
+  background-color: var(--Magnolia);
+  padding: 20px;
+  border-radius: 5px;
+  gap: 10px;
+}
+.finish-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.finish-items :nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.finish-items :nth-child(2) {
+  font-size: 14px;
+  color: var(--Cool-gray);
+}
+.addons-items {
+  display: flex;
+  justify-content: space-between;
+}
+.addons-items :nth-child(1) {
+  color: var(--Cool-gray);
+}
+.addons-items :nth-child(2) {
+  font-size: 14px;
+}
+.total-price {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.total-price :nth-child(1) {
+  color: var(--Cool-gray);
+}
+.total-price :nth-child(2) {
+  font-family: Ubuntu-Bold, serif;
+  color: var(--Purplish-blue);
+  font-size: 20px;
+}
+.middle {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.thank-you-image {
+  display: flex;
+  justify-content: center;
+}
+.thank-you-title {
+  display: flex;
+  justify-content: center;
+  font-family: Ubuntu-Bold, serif;
+  font-size: 26px;
+}
+.thank-you-description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: var(--Cool-gray);
 }

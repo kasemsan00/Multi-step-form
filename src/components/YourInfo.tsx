@@ -1,6 +1,10 @@
-export default function YourInfo() {
+interface Props {
+  show: boolean;
+}
+
+export default function YourInfo({ show }: Props) {
   return (
-    <div className="form-card">
+    <div className="form-card" style={{ display: show ? "none" : "" }}>
       <div className="form-title">Personal Info</div>
       <p className="form-description">
         Please provide your name, email address, and phone number
