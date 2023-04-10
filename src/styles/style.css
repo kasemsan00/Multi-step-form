@@ -28,11 +28,12 @@
 * {
   font-family: Ubuntu-Regular, serif;
   font-size: 16px;
+  color: var(--Marine-blue);
 }
 .main {
   display: flex;
-  width: 700px;
-  height: 500px;
+  width: 800px;
+  height: 565px;
   background-color: var(--White);
   padding: 20px;
   border-radius: 10px;
@@ -40,8 +41,8 @@
 .form-step {
   border-radius: 10px;
   background-color: var(--Purplish-blue);
-  height: 100%;
-  width: 100%;
+  background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  width: 340px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -55,7 +56,13 @@
   align-items: center;
   gap: 20px;
 }
+.step-active {
+  color: var(--Marine-blue) !important;
+  background-color: var(--Light-blue);
+  border: solid 1px var(--Light-blue) !important;
+}
 .step-number {
+  color: var(--White);
   width: 30px;
   height: 30px;
   display: flex;
@@ -73,5 +80,171 @@
 }
 .form-input-section {
   width: 100%;
-  height: 100%;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.form-title {
+  font-family: Ubuntu-Medium, serif;
+  font-size: 30px;
+  color: var(--Marine-blue);
+}
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-description {
+  color: var(--Cool-gray);
+}
+.form-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-input-field > div {
+  display: flex;
+  justify-content: space-between;
+}
+.input-warning {
+  font-family: Ubuntu-Bold, serif;
+  color: var(--Strawberry-red);
+}
+.form-input-footer {
+  display: flex;
+  justify-content: space-between;
+}
+.next-step-button {
+  background-color: var(--Purplish-blue);
+  color: var(--White);
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  right: 0;
+}
+.next-step-button:hover {
+  background-color: var(--Marine-blue);
+}
+.go-back-button {
+  background-color: var(--White);
+  color: var(--Marine-blue);
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.plan-option > ul {
+  height: 150px;
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.plan-option > ul > li {
+  padding: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 1px var(--Light-gray);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.plan-option > ul > li:hover {
+  border: solid 1px var(--Purplish-blue) !important;
+}
+.plan-option > ul > li:active {
+  background-color: var(--Alabaster) !important;
+}
+.plan-title {
+  font-family: Ubuntu-Bold, serif;
+}
+.plan-price {
+  color: var(--Cool-gray);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  background-image: linear-gradient(
+    to right,
+    var(--Marine-blue),
+    var(--Marine-blue)
+  );
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-image: linear-gradient(
+    to right,
+    var(--Marine-blue),
+    var(--Marine-blue)
+  );
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+.switch-monthly-yearly {
+  padding: 10px;
+  background-color: var(--Magnolia);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 5px;
+}
+.form-addons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
+  align-content: center;
 }
