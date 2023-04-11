@@ -3,6 +3,7 @@ export interface IFormInput {
   email: string;
   phoneNumber: string;
   planName: string;
-  planTime: string;
+  planMonthly: number;
+  planYear: number;
   planPrice: string;
 }
