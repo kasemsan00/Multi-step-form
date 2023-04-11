@@ -1,4 +1,4 @@
-import Step from "@/components/Step";
+import Step from "@/components/sidebar/Step";
 
 interface Props {
   step: number;

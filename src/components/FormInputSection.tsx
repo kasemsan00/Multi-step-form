@@ -1,8 +1,9 @@
-import YourInfo from "@/components/YourInfo";
-import SelectPlan from "@/components/SelectPlan";
-import AddOns from "@/components/AddOns";
-import Summary from "@/components/Summary";
-import ThankYou from "@/components/ThankYou";
+import YourInfo from "@/components/form/YourInfo";
+import SelectPlan from "@/components/form/SelectPlan";
+import AddOns from "@/components/form/AddOns";
+import Summary from "@/components/form/Summary";
+import ThankYou from "@/components/form/ThankYou";
+import { useState } from "react";
 
 interface Props {
   step: number;
@@ -10,6 +11,14 @@ interface Props {
 }
 
 export default function FormInputSection({ step, setStep }: Props) {
+  const [formInput, setFormInput] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    planName: "",
+    planTime: "monthly",
+    planPrice: "",
+  });
   const HandleNextStep = () => {
     setStep(step + 1);
   };

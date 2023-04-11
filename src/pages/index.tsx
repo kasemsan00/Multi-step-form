@@ -1,18 +1,11 @@
 import Head from "next/head";
-import SidebarStep from "@/components/SidebarStep";
+import SidebarStep from "@/components/sidebar/SidebarStep";
 import FormInputSection from "@/components/FormInputSection";
 import { useState } from "react";
 
 export default function Home() {
   const [step, setStep] = useState<number>(1);
-  const [formInput, setFormInput] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    planName: "",
-    planTime: "monthly",
-    planPrice: "",
-  });
+
   return (
     <>
       <Head>
