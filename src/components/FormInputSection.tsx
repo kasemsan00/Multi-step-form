@@ -16,7 +16,6 @@ export default function FormInputSection({ step, setStep }: Props) {
   const HandleGoBack = () => {
     setStep(step - 1);
   };
-
   return (
     <div className="form-input-section">
       <YourInfo show={step === 1} />
