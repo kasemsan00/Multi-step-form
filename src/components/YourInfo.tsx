@@ -12,21 +12,21 @@ export default function YourInfo({ show }: Props) {
       <div className="form-input-field">
         <div>
           <label>Name</label>
-          <label className="input-warning">This field is required</label>
+          <label className="input-warning hide">This field is required</label>
         </div>
         <input type="text" placeholder="e.g. Stephen King" />
       </div>
       <div className="form-input-field">
         <div>
           <label>Email Address</label>
-          <label className="input-warning">This field is required</label>
+          <label className="input-warning hide">This field is required</label>
         </div>
         <input type="email" placeholder="e.g stephenking@lorem.com" />
       </div>
       <div className="form-input-field">
         <div>
           <label>Phone Number</label>
-          <label className="input-warning">This field is required</label>
+          <label className="input-warning hide">This field is required</label>
         </div>
         <input type="number" placeholder="e.g +1 234 567 890" />
       </div>

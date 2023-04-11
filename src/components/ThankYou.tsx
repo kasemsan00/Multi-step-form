@@ -15,7 +15,7 @@ export default function ThankYou({ show }: Props) {
           src={require("@/assets/images/icon-thank-you.svg")}
           width={70}
           height={70}
-          alt={"Thank you"}
+          alt="Thank you"
         />
       </div>
       <div className="thank-you-title">Thank you!</div>

@@ -107,6 +107,9 @@
   display: flex;
   justify-content: space-between;
 }
+.hide {
+  display: none;
+}
 .input-warning {
   font-family: Ubuntu-Bold, serif;
   color: var(--Strawberry-red);
