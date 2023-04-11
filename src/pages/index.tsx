@@ -22,7 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-        <SidebarStep step={step} />
+        <SidebarStep step={step} setStep={setStep} />
         <FormInputSection step={step} setStep={setStep} />
       </main>
     </>

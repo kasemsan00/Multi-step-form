@@ -55,6 +55,7 @@
   flex-direction: row;
   align-items: center;
   gap: 20px;
+  cursor: pointer;
 }
 .step-active {
   color: var(--Marine-blue) !important;

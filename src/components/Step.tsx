@@ -1,13 +1,25 @@
 interface Props {
-  number: string;
+  number: number;
   stepTitle: string;
   stepInfo: string;
   active: boolean;
+  onClick: (arg0: number) => void;
 }
 
-export default function Step({ number, stepTitle, stepInfo, active }: Props) {
+export default function Step({
+  number,
+  stepTitle,
+  stepInfo,
+  active,
+  onClick,
+}: Props) {
   return (
-    <div className="step">
+    <div
+      className="step"
+      onClick={() => {
+        onClick(number);
+      }}
+    >
       <div className={`step-number ${active ? "step-active" : ""}`}>
         {number}
       </div>
