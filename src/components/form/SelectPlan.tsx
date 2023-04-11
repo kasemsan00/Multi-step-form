@@ -1,10 +1,24 @@
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
 interface Props {
   show: boolean;
 }
 
 export default function SelectPlan({ show }: Props) {
+  const [monthlyYear, setMonthlyYear] = useState(false);
+
+  useEffect(() => {
+    if (monthlyYear) {
+    }
+    if (!monthlyYear) {
+    }
+  }, [monthlyYear]);
+
+  const HandleChangeSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMonthlyYear(event.target.checked);
+  };
+
   return (
     <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Select your plan</div>
@@ -60,7 +74,7 @@ export default function SelectPlan({ show }: Props) {
       <div className="switch-monthly-yearly">
         <span>Monthly</span>
         <label className="switch">
-          <input type="checkbox" />
+          <input type="checkbox" onChange={HandleChangeSwitch} />
           <span className="slider round"></span>
         </label>
         <span>Yearly</span>
