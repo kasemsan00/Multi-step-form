@@ -4,6 +4,7 @@ import AddOns from "@/components/form/AddOns";
 import Summary from "@/components/form/Summary";
 import ThankYou from "@/components/form/ThankYou";
 import { useState } from "react";
+import { IFormInput } from "@/components/interface/Form";
 
 interface Props {
   step: number;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 export default function FormInputSection({ step, setStep }: Props) {
-  const [formInput, setFormInput] = useState({
+  const [formInput, setFormInput] = useState<IFormInput>({
     name: "",
     email: "",
     phoneNumber: "",
@@ -19,15 +20,31 @@ export default function FormInputSection({ step, setStep }: Props) {
     planTime: "monthly",
     planPrice: "",
   });
+
   const HandleNextStep = () => {
     setStep(step + 1);
   };
   const HandleGoBack = () => {
     setStep(step - 1);
   };
+  const HandleChangeName = (event: any) => {
+    setFormInput((state) => ({ ...state, name: event.target.value }));
+  };
+  const HandleChangeEmail = (event: any) => {
+    setFormInput((state) => ({ ...state, email: event.target.value }));
+  };
+  const HandleChangePhoneNumber = (event: any) => {
+    setFormInput((state) => ({ ...state, phoneNumber: event.target.value }));
+  };
   return (
     <div className="form-input-section">
-      <YourInfo show={step === 1} />
+      <YourInfo
+        show={step === 1}
+        formInput={formInput}
+        changeName={HandleChangeName}
+        changeEmail={HandleChangeEmail}
+        changePhoneNumber={HandleChangePhoneNumber}
+      />
       <SelectPlan show={step === 2} />
       <AddOns show={step === 3} />
       <Summary show={step === 4} />
