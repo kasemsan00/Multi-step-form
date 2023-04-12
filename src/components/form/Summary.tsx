@@ -1,11 +1,49 @@
 import { IFormInput } from "@/components/interface/Form";
+import { useEffect, useState } from "react";
 
 interface Props {
   show: boolean;
+  setStep: (arg0: number) => void;
   formInput: IFormInput;
 }
+const AddOnsItem = ({
+  title,
+  price,
+  isYear,
+}: {
+  title: string;
+  price: number;
+  isYear: boolean;
+}) => {
+  return (
+    <div className="addons-items">
+      <div>{title}</div>
+      <div>
+        +{!isYear ? price : price * 10}/{isYear ? "mo" : "yr"}
+      </div>
+    </div>
+  );
+};
 
-export default function Summary({ show, formInput }: Props) {
+export default function Summary({ show, setStep, formInput }: Props) {
+  const [totalPrice, setTotalPrice] = useState(0);
+  useEffect(() => {
+    let multiple = 1;
+    if (formInput.planYear) {
+      multiple = 10;
+    }
+    setTotalPrice(
+      formInput.planPrice * multiple +
+        formInput.onlineServicesPrice * multiple +
+        formInput.largerStoragePrice * multiple +
+        formInput.customizableProfilePrice * multiple
+    );
+  }, [formInput, formInput.planYear]);
+
+  const HandleChangePlan = () => {
+    setStep(2);
+  };
+
   return (
     <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Finishing up</div>
@@ -16,25 +54,51 @@ export default function Summary({ show, formInput }: Props) {
         <div className="finish-items">
           <div>
             <label>
-              {formInput.planName} ({!formInput.planYear ? "Monthly" : "Year"})
+              {formInput.planName} ({!formInput.planYear ? "Monthly" : "Yearly"}
+              )
             </label>
-            <span className="summary-change">Change</span>
+            <span onClick={HandleChangePlan} className="summary-change">
+              Change
+            </span>
           </div>
-          <div>$9/mo</div>
+          {formInput.planMonthly ? (
+            <div>${formInput.planPrice}/mo</div>
+          ) : (
+            <div>${formInput.planPrice * 10}/yr</div>
+          )}
         </div>
-        <hr />
-        <div className="addons-items">
-          <div>Online service</div>
-          <div>+1$/mo</div>
-        </div>
-        <div className="addons-items">
-          <div>Larger storage</div>
-          <div>+$2/mo</div>
-        </div>
+        {formInput.onlineServices ||
+        formInput.largerStorage ||
+        formInput.customizableProfile ? (
+          <hr />
+        ) : null}
+        {formInput.onlineServices ? (
+          <AddOnsItem
+            title={"Online Service"}
+            price={formInput.onlineServicesPrice}
+            isYear={formInput.planYear}
+          />
+        ) : null}
+        {formInput.largerStorage ? (
+          <AddOnsItem
+            title={"Larger storage"}
+            price={formInput.largerStoragePrice}
+            isYear={formInput.planYear}
+          />
+        ) : null}
+        {formInput.customizableProfile ? (
+          <AddOnsItem
+            title={"Customizable Profile"}
+            price={formInput.customizableProfilePrice}
+            isYear={formInput.planYear}
+          />
+        ) : null}
       </div>
       <div className="total-price">
-        <div>Total (per month)</div>
-        <div>+$12/mo</div>
+        <div>Total ({!formInput.planYear ? "per month" : "per year"})</div>
+        <div>
+          +${totalPrice}/ ({!formInput.planYear ? "mo" : "yr"})
+        </div>
       </div>
     </div>
   );

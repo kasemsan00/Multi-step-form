@@ -3,7 +3,7 @@ import SelectPlan from "@/components/form/SelectPlan";
 import AddOns from "@/components/form/AddOns";
 import Summary from "@/components/form/Summary";
 import ThankYou from "@/components/form/ThankYou";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IFormInput } from "@/components/interface/Form";
 
 interface Props {
@@ -38,12 +38,15 @@ export default function FormInputSection({ step, setStep }: Props) {
     email: "",
     phoneNumber: "",
     planName: "Arcade",
-    planMonthly: 0,
-    planYear: 0,
-    planPrice: "",
+    planMonthly: false,
+    planYear: false,
+    planPrice: 9,
     onlineServices: false,
+    onlineServicesPrice: 0,
     largerStorage: false,
+    largerStoragePrice: 0,
     customizableProfile: false,
+    customizableProfilePrice: 0,
   });
 
   const HandleChangeName = (event: any) => {
@@ -77,7 +80,7 @@ export default function FormInputSection({ step, setStep }: Props) {
         formInput={formInput}
         setFormInput={setFormInput}
       />
-      <Summary show={step === 4} formInput={formInput} />
+      <Summary show={step === 4} setStep={setStep} formInput={formInput} />
       <ThankYou show={step === 5} />
       <div className="form-input-footer">
         {step !== 1 && step !== 5 ? (

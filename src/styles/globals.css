@@ -92,6 +92,9 @@ a {
   text-decoration: none;
 }
 
+::placeholder {
+  color: var(--Cool-gray);
+}
 input {
   border-radius: 10px;
   border: solid 1px var(--Light-gray);

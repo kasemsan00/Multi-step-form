@@ -3,10 +3,13 @@ export interface IFormInput {
   email: string;
   phoneNumber: string;
   planName: string;
-  planMonthly: number;
-  planYear: number;
-  planPrice: string;
+  planMonthly: boolean;
+  planYear: boolean;
+  planPrice: number;
   onlineServices: boolean;
+  onlineServicesPrice: number;
   largerStorage: boolean;
+  largerStoragePrice: number;
   customizableProfile: boolean;
+  customizableProfilePrice: number;
 }

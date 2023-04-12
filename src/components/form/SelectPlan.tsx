@@ -24,18 +24,30 @@ export default function SelectPlan({
 
   useEffect(() => {
     if (monthlyYear) {
-      setFormInput((state: any) => ({ ...state, planYear: 1 }));
+      setFormInput((state: any) => ({
+        ...state,
+        planYear: true,
+        planMonthly: false,
+      }));
     }
     if (!monthlyYear) {
-      setFormInput((state: any) => ({ ...state, planMonthly: 1 }));
+      setFormInput((state: any) => ({
+        ...state,
+        planMonthly: true,
+        planYear: false,
+      }));
     }
-  }, [monthlyYear]);
+  }, [monthlyYear, setFormInput]);
 
   const HandleChangeSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonthlyYear(event.target.checked);
   };
-  const HandleSelectPlan = (value: string) => {
-    setFormInput((state: any) => ({ ...state, planName: value }));
+  const HandleSelectPlan = (planName: string, planPrice: number) => {
+    setFormInput((state: any) => ({
+      ...state,
+      planName: planName,
+      planPrice: planPrice,
+    }));
   };
 
   return (
@@ -53,7 +65,7 @@ export default function SelectPlan({
               }
               key={index}
               onClick={(event) => {
-                HandleSelectPlan(item.title);
+                HandleSelectPlan(item.title, item.price);
               }}
             >
               <div>

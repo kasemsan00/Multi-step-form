@@ -272,6 +272,9 @@ input:checked + .slider:before {
   flex-direction: row;
   align-items: center;
 }
+.addons-card-active {
+  border: solid 1px var(--Purplish-blue);
+}
 .addons-card > input {
   width: 20px;
   height: 20px;

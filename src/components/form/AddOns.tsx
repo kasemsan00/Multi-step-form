@@ -8,7 +8,16 @@ interface Props {
   setFormInput: (arg0: any) => void;
 }
 
-const addonsKey = ["onlineServices", "largerStorage", "customizableProfile"];
+const addonsNameKey = [
+  "onlineServices",
+  "largerStorage",
+  "customizableProfile",
+];
+const addonsPriceKey = [
+  "onlineServicesPrice",
+  "largerStoragePrice",
+  "customizableProfilePrice",
+];
 const PriceYear = ({ price }: { price: number }) => {
   return <div className="addons-price">+${price * 10}/yr</div>;
 };
@@ -18,11 +27,13 @@ export default function AddOns({
   formInput,
   setFormInput,
 }: Props) {
-  const HandleClickAddons = (key: number) => {
-    const currentValue = formInput[addonsKey[key] as keyof typeof formInput];
+  const HandleClickAddons = (key: number, price: number) => {
+    const currentValue =
+      formInput[addonsNameKey[key] as keyof typeof formInput];
     setFormInput((state: any) => ({
       ...state,
-      [addonsKey[key]]: !currentValue,
+      [addonsNameKey[key]]: !currentValue,
+      [addonsPriceKey[key]]: price,
     }));
   };
 
@@ -35,15 +46,23 @@ export default function AddOns({
       <form className="form-addons">
         {addOnsList.map((item: any, index: number) => (
           <div
-            className="addons-card"
+            className={`addons-card ${
+              formInput[addonsNameKey[index] as keyof typeof formInput]
+                ? "addons-card-active"
+                : ""
+            }`}
             key={index}
-            onClick={() => HandleClickAddons(index)}
+            onClick={() => HandleClickAddons(index, item.price)}
           >
             <input
               type="checkbox"
               value={item.title}
-              checked={formInput[addonsKey[index] as keyof typeof formInput]}
-              onChange={() => HandleClickAddons(index)}
+              checked={
+                formInput[
+                  addonsNameKey[index] as keyof typeof formInput
+                ] as boolean
+              }
+              onChange={() => HandleClickAddons(index, item.price)}
             />
             <div className="addons-detail">
               <label className="addons-title">{item.title}</label>
