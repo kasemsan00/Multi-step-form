@@ -6,4 +6,7 @@ export interface IFormInput {
   planMonthly: number;
   planYear: number;
   planPrice: string;
+  onlineServices: boolean;
+  largerStorage: boolean;
+  customizableProfile: boolean;
 }

@@ -1,8 +1,11 @@
+import { IFormInput } from "@/components/interface/Form";
+
 interface Props {
   show: boolean;
+  formInput: IFormInput;
 }
 
-export default function Summary({ show }: Props) {
+export default function Summary({ show, formInput }: Props) {
   return (
     <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Finishing up</div>
@@ -12,8 +15,10 @@ export default function Summary({ show }: Props) {
       <div className="finish-detail">
         <div className="finish-items">
           <div>
-            <label>Arcade (Monthly)</label>
-            <span>Change</span>
+            <label>
+              {formInput.planName} ({!formInput.planYear ? "Monthly" : "Year"})
+            </label>
+            <span className="summary-change">Change</span>
           </div>
           <div>$9/mo</div>
         </div>

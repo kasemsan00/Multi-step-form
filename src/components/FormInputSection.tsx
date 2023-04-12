@@ -10,16 +10,40 @@ interface Props {
   step: number;
   setStep: (arg0: number) => void;
 }
-
+const planList = [
+  { title: "Arcade", price: 9, icon: "icon-arcade.svg" },
+  {
+    title: "Advanced",
+    price: 12,
+    icon: "icon-advanced.svg",
+  },
+  { title: "Pro", price: 15, icon: "icon-pro.svg" },
+];
+const addOnsList = [
+  {
+    title: "Online service",
+    description: "Access to multiplayer games",
+    price: 1,
+  },
+  { title: "Larger storage", description: "Extra 1TB cloud save", price: 2 },
+  {
+    title: "Customizable Profile",
+    description: "Custom theme on your profile",
+    price: 2,
+  },
+];
 export default function FormInputSection({ step, setStep }: Props) {
   const [formInput, setFormInput] = useState<IFormInput>({
     name: "",
     email: "",
     phoneNumber: "",
-    planName: "",
+    planName: "Arcade",
     planMonthly: 0,
     planYear: 0,
     planPrice: "",
+    onlineServices: false,
+    largerStorage: false,
+    customizableProfile: false,
   });
 
   const HandleChangeName = (event: any) => {
@@ -41,9 +65,19 @@ export default function FormInputSection({ step, setStep }: Props) {
         changeEmail={HandleChangeEmail}
         changePhoneNumber={HandleChangePhoneNumber}
       />
-      <SelectPlan show={step === 2} setFormInput={setFormInput} />
-      <AddOns show={step === 3} />
-      <Summary show={step === 4} />
+      <SelectPlan
+        planList={planList}
+        show={step === 2}
+        formInput={formInput}
+        setFormInput={setFormInput}
+      />
+      <AddOns
+        addOnsList={addOnsList}
+        show={step === 3}
+        formInput={formInput}
+        setFormInput={setFormInput}
+      />
+      <Summary show={step === 4} formInput={formInput} />
       <ThankYou show={step === 5} />
       <div className="form-input-footer">
         {step !== 1 && step !== 5 ? (
