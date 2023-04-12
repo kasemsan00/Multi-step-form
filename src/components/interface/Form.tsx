@@ -13,3 +13,8 @@ export interface IFormInput {
   customizableProfile: boolean;
   customizableProfilePrice: number;
 }
+export interface IValidField {
+  isNameValid: boolean | undefined;
+  isEmailValid: boolean | undefined;
+  isPhoneNumberValid: boolean | undefined;
+}

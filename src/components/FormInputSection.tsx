@@ -48,7 +48,11 @@ export default function FormInputSection({ step, setStep }: Props) {
     customizableProfile: false,
     customizableProfilePrice: 0,
   });
-
+  const [validField, setValidField] = useState({
+    isNameValid: true,
+    isEmailValid: true,
+    isPhoneNumberValid: true,
+  });
   const HandleChangeName = (event: any) => {
     setFormInput((state) => ({ ...state, name: event.target.value }));
   };
@@ -58,12 +62,27 @@ export default function FormInputSection({ step, setStep }: Props) {
   const HandleChangePhoneNumber = (event: any) => {
     setFormInput((state) => ({ ...state, phoneNumber: event.target.value }));
   };
-
+  const HandleNextStep = () => {
+    if (formInput.name === "") {
+      setValidField((state: any) => ({
+        ...state,
+        isNameValid: false,
+      }));
+    }
+    if (formInput.email === "") {
+      setValidField((state: any) => ({ ...state, isEmailValid: false }));
+    }
+    if (formInput.phoneNumber === "") {
+      setValidField((state: any) => ({ ...state, isPhoneNumberValid: false }));
+    }
+    return;
+  };
   return (
     <div className="form-input-section">
       <YourInfo
         show={step === 1}
         formInput={formInput}
+        validField={validField}
         changeName={HandleChangeName}
         changeEmail={HandleChangeEmail}
         changePhoneNumber={HandleChangePhoneNumber}
@@ -94,12 +113,7 @@ export default function FormInputSection({ step, setStep }: Props) {
           </button>
         ) : null}
         {step !== 5 ? (
-          <button
-            onClick={() => {
-              setStep(step + 1);
-            }}
-            className="next-step-button"
-          >
+          <button onClick={HandleNextStep} className="next-step-button">
             Next Step
           </button>
         ) : null}

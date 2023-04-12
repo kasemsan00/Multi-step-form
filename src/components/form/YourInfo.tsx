@@ -1,8 +1,9 @@
-import { IFormInput } from "@/components/interface/Form";
+import { IFormInput, IValidField } from "@/components/interface/Form";
 
 interface Props {
   show: boolean;
   formInput: IFormInput;
+  validField: IValidField;
   changeName: (arg0: any) => void;
   changeEmail: (arg0: any) => void;
   changePhoneNumber: (arg0: any) => void;
@@ -11,6 +12,7 @@ interface Props {
 export default function YourInfo({
   show,
   formInput,
+  validField,
   changeName,
   changeEmail,
   changePhoneNumber,
@@ -24,9 +26,14 @@ export default function YourInfo({
       <div className="form-input-field">
         <div>
           <label>Name</label>
-          <label className="input-warning hide">This field is required</label>
+          <label
+            className={`warning-label ${validField.isNameValid ? "hide" : ""}`}
+          >
+            This field is required
+          </label>
         </div>
         <input
+          className={validField.isNameValid ? undefined : "warning-input"}
           type="text"
           placeholder="e.g. Stephen King"
           value={formInput.name}
@@ -36,9 +43,14 @@ export default function YourInfo({
       <div className="form-input-field">
         <div>
           <label>Email Address</label>
-          <label className="input-warning hide">This field is required</label>
+          <label
+            className={`warning-label ${validField.isNameValid ? "hide" : ""}`}
+          >
+            This field is required
+          </label>
         </div>
         <input
+          className={validField.isEmailValid ? undefined : "warning-input"}
           type="email"
           placeholder="e.g stephenking@lorem.com"
           value={formInput.email}
@@ -48,9 +60,16 @@ export default function YourInfo({
       <div className="form-input-field">
         <div>
           <label>Phone Number</label>
-          <label className="input-warning hide">This field is required</label>
+          <label
+            className={`warning-label ${validField.isNameValid ? "hide" : ""}`}
+          >
+            This field is required
+          </label>
         </div>
         <input
+          className={
+            validField.isPhoneNumberValid ? undefined : "warning-input"
+          }
           type="number"
           placeholder="e.g +1 234 567 890"
           value={formInput.phoneNumber}

@@ -109,11 +109,14 @@
   justify-content: space-between;
 }
 .hide {
-  display: none;
+  display: none !important;
 }
-.input-warning {
+.warning-label {
   font-family: Ubuntu-Bold, serif;
   color: var(--Strawberry-red);
+}
+.warning-input {
+  border: solid 1px var(--Strawberry-red);
 }
 .form-input-footer {
   display: inline-block;
