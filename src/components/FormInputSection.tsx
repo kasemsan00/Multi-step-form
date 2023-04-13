@@ -62,20 +62,38 @@ export default function FormInputSection({ step, setStep }: Props) {
   const HandleChangePhoneNumber = (event: any) => {
     setFormInput((state) => ({ ...state, phoneNumber: event.target.value }));
   };
-  const HandleNextStep = () => {
+  const ValidateForm = () => {
     if (formInput.name === "") {
       setValidField((state: any) => ({
         ...state,
         isNameValid: false,
       }));
+      return false;
+    } else {
+      setValidField((state: any) => ({
+        ...state,
+        isNameValid: true,
+      }));
     }
     if (formInput.email === "") {
       setValidField((state: any) => ({ ...state, isEmailValid: false }));
+      return false;
+    } else {
+      setValidField((state) => ({ ...state, isEmailValid: true }));
     }
     if (formInput.phoneNumber === "") {
       setValidField((state: any) => ({ ...state, isPhoneNumberValid: false }));
+      return false;
+    } else {
+      setValidField((state) => ({ ...state, isPhoneNumberValid: true }));
     }
-    return;
+    return true;
+  };
+  const HandleNextStep = () => {
+    const isValidate = ValidateForm();
+    if (isValidate) {
+      setStep(step + 1);
+    }
   };
   return (
     <div className="form-input-section">
@@ -87,18 +105,8 @@ export default function FormInputSection({ step, setStep }: Props) {
         changeEmail={HandleChangeEmail}
         changePhoneNumber={HandleChangePhoneNumber}
       />
-      <SelectPlan
-        planList={planList}
-        show={step === 2}
-        formInput={formInput}
-        setFormInput={setFormInput}
-      />
-      <AddOns
-        addOnsList={addOnsList}
-        show={step === 3}
-        formInput={formInput}
-        setFormInput={setFormInput}
-      />
+      <SelectPlan planList={planList} show={step === 2} formInput={formInput} setFormInput={setFormInput} />
+      <AddOns addOnsList={addOnsList} show={step === 3} formInput={formInput} setFormInput={setFormInput} />
       <Summary show={step === 4} setStep={setStep} formInput={formInput} />
       <ThankYou show={step === 5} />
       <div className="form-input-footer">

@@ -42,6 +42,7 @@
   border-radius: 10px;
   background-color: var(--Purplish-blue);
   background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  background-size: 100%;
   width: 340px;
   display: flex;
   flex-direction: column;
@@ -205,11 +206,7 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  background-image: linear-gradient(
-    to right,
-    var(--Marine-blue),
-    var(--Marine-blue)
-  );
+  background-image: linear-gradient(to right, var(--Marine-blue), var(--Marine-blue));
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -227,11 +224,7 @@
 }
 
 input:checked + .slider {
-  background-image: linear-gradient(
-    to right,
-    var(--Marine-blue),
-    var(--Marine-blue)
-  );
+  background-image: linear-gradient(to right, var(--Marine-blue), var(--Marine-blue));
 }
 
 input:focus + .slider {
@@ -265,7 +258,6 @@ input:checked + .slider:before {
   align-content: center;
   gap: 15px;
 }
-
 .addons-card {
   position: relative;
   padding: 20px;
@@ -274,6 +266,10 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
+}
+.addons-card:hover {
+  outline: solid 1px var(--Purplish-blue);
 }
 .addons-card-active {
   border: solid 1px var(--Purplish-blue);
@@ -379,5 +375,58 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 .summary-change:hover {
+  color: var(--Purplish-blue);
   text-decoration: underline;
+}
+@media only screen and (max-width: 500px) {
+  body {
+    display: block;
+    background-color: lightblue;
+    margin: 0;
+  }
+  .main {
+    background-color: transparent;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  .form-input-section {
+    height: 100%;
+    width: calc(100% - 50px);
+    padding: 10px;
+    margin-top: 120px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 10px;
+    z-index: 999;
+    background-color: var(--White);
+  }
+  .form-step {
+    position: fixed;
+    z-index: -1;
+    flex-direction: row;
+    width: 100%;
+    gap: 5px;
+    padding: 0;
+    justify-content: center;
+    height: 176px;
+    background-image: url("../assets/images/bg-sidebar-mobile.svg") !important;
+    background-size: 100%;
+    border-radius: 0;
+  }
+  .step {
+    width: 50px;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  .step > div:nth-child(2) {
+    display: none;
+  }
+  .form-input-footer {
+    width: 100%;
+    background-color: var(--White);
+    bottom: 0;
+    position: fixed;
+  }
 }

@@ -6,15 +6,7 @@ interface Props {
   setStep: (arg0: number) => void;
   formInput: IFormInput;
 }
-const AddOnsItem = ({
-  title,
-  price,
-  isYear,
-}: {
-  title: string;
-  price: number;
-  isYear: boolean;
-}) => {
+const AddOnsItem = ({ title, price, isYear }: { title: string; price: number; isYear: boolean }) => {
   return (
     <div className="addons-items">
       <div>{title}</div>
@@ -47,51 +39,24 @@ export default function Summary({ show, setStep, formInput }: Props) {
   return (
     <div className="form-card" style={{ display: show ? undefined : "none" }}>
       <div className="form-title">Finishing up</div>
-      <p className="form-description">
-        Double-check everything looks OK before confirming
-      </p>
+      <p className="form-description">Double-check everything looks OK before confirming</p>
       <div className="finish-detail">
         <div className="finish-items">
           <div>
             <label>
-              {formInput.planName} ({!formInput.planYear ? "Monthly" : "Yearly"}
-              )
+              {formInput.planName} ({!formInput.planYear ? "Monthly" : "Yearly"})
             </label>
-            <span onClick={HandleChangePlan} className="summary-change">
+            <a onClick={HandleChangePlan} className="summary-change">
               Change
-            </span>
+            </a>
           </div>
-          {formInput.planMonthly ? (
-            <div>${formInput.planPrice}/mo</div>
-          ) : (
-            <div>${formInput.planPrice * 10}/yr</div>
-          )}
+          {formInput.planMonthly ? <div>${formInput.planPrice}/mo</div> : <div>${formInput.planPrice * 10}/yr</div>}
         </div>
-        {formInput.onlineServices ||
-        formInput.largerStorage ||
-        formInput.customizableProfile ? (
-          <hr />
-        ) : null}
-        {formInput.onlineServices ? (
-          <AddOnsItem
-            title={"Online Service"}
-            price={formInput.onlineServicesPrice}
-            isYear={formInput.planYear}
-          />
-        ) : null}
-        {formInput.largerStorage ? (
-          <AddOnsItem
-            title={"Larger storage"}
-            price={formInput.largerStoragePrice}
-            isYear={formInput.planYear}
-          />
-        ) : null}
+        {formInput.onlineServices || formInput.largerStorage || formInput.customizableProfile ? <hr /> : null}
+        {formInput.onlineServices ? <AddOnsItem title={"Online Service"} price={formInput.onlineServicesPrice} isYear={formInput.planYear} /> : null}
+        {formInput.largerStorage ? <AddOnsItem title={"Larger storage"} price={formInput.largerStoragePrice} isYear={formInput.planYear} /> : null}
         {formInput.customizableProfile ? (
-          <AddOnsItem
-            title={"Customizable Profile"}
-            price={formInput.customizableProfilePrice}
-            isYear={formInput.planYear}
-          />
+          <AddOnsItem title={"Customizable Profile"} price={formInput.customizableProfilePrice} isYear={formInput.planYear} />
         ) : null}
       </div>
       <div className="total-price">

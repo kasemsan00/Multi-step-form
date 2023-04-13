@@ -44,7 +44,7 @@ export default function YourInfo({
         <div>
           <label>Email Address</label>
           <label
-            className={`warning-label ${validField.isNameValid ? "hide" : ""}`}
+            className={`warning-label ${validField.isEmailValid ? "hide" : ""}`}
           >
             This field is required
           </label>
@@ -61,7 +61,9 @@ export default function YourInfo({
         <div>
           <label>Phone Number</label>
           <label
-            className={`warning-label ${validField.isNameValid ? "hide" : ""}`}
+            className={`warning-label ${
+              validField.isPhoneNumberValid ? "hide" : ""
+            }`}
           >
             This field is required
           </label>
