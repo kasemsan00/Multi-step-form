@@ -3,13 +3,14 @@ import SelectPlan from "@/components/form/SelectPlan";
 import AddOns from "@/components/form/AddOns";
 import Summary from "@/components/form/Summary";
 import ThankYou from "@/components/form/ThankYou";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IFormInput } from "@/components/interface/Form";
 
 interface Props {
   step: number;
   setStep: (arg0: number) => void;
 }
+
 const planList = [
   { title: "Arcade", price: 9, icon: "icon-arcade.svg" },
   {
