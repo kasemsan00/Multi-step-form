@@ -90,42 +90,49 @@ export default function FormInputSection({ step, setStep }: Props) {
     return true;
   };
   const HandleNextStep = () => {
+    console.log("next");
     const isValidate = ValidateForm();
     if (isValidate) {
       setStep(step + 1);
     }
   };
   return (
-    <div className="form-input-section">
-      <YourInfo
-        show={step === 1}
-        formInput={formInput}
-        validField={validField}
-        changeName={HandleChangeName}
-        changeEmail={HandleChangeEmail}
-        changePhoneNumber={HandleChangePhoneNumber}
-      />
-      <SelectPlan planList={planList} show={step === 2} formInput={formInput} setFormInput={setFormInput} />
-      <AddOns addOnsList={addOnsList} show={step === 3} formInput={formInput} setFormInput={setFormInput} />
-      <Summary show={step === 4} setStep={setStep} formInput={formInput} />
-      <ThankYou show={step === 5} />
-      <div className="form-input-footer">
-        {step !== 1 && step !== 5 ? (
-          <button
-            onClick={() => {
-              setStep(step - 1);
-            }}
-            className="go-back-button"
-          >
-            Go Back
-          </button>
-        ) : null}
-        {step !== 5 ? (
-          <button onClick={HandleNextStep} className="next-step-button">
-            Next Step
-          </button>
-        ) : null}
+    <>
+      <div className="form-section">
+        <div className="form-data">
+          <YourInfo
+            show={step === 1}
+            formInput={formInput}
+            validField={validField}
+            changeName={HandleChangeName}
+            changeEmail={HandleChangeEmail}
+            changePhoneNumber={HandleChangePhoneNumber}
+          />
+          <SelectPlan planList={planList} show={step === 2} formInput={formInput} setFormInput={setFormInput} />
+          <AddOns addOnsList={addOnsList} show={step === 3} formInput={formInput} setFormInput={setFormInput} />
+          <Summary show={step === 4} setStep={setStep} formInput={formInput} />
+          <ThankYou show={step === 5} />
+        </div>
+        <div className={`form-footer ${step === 5 ? "hide" : ""}`}>
+          {step !== 1 && step !== 5 ? (
+            <button
+              onClick={() => {
+                setStep(step - 1);
+              }}
+              className="go-back-button"
+            >
+              Go Back
+            </button>
+          ) : (
+            <div></div>
+          )}
+          {step !== 5 ? (
+            <button onClick={HandleNextStep} className="next-step-button">
+              Next Step
+            </button>
+          ) : null}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

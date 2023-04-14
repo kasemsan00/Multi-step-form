@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 interface Props {
   number: number;
   stepTitle: string;
@@ -6,23 +8,10 @@ interface Props {
   onClick: (arg0: number) => void;
 }
 
-export default function Step({
-  number,
-  stepTitle,
-  stepInfo,
-  active,
-  onClick,
-}: Props) {
+export default function Step({ number, stepTitle, stepInfo, active, onClick }: Props) {
   return (
-    <div
-      className="step"
-      onClick={() => {
-        onClick(number);
-      }}
-    >
-      <div className={`step-number ${active ? "step-active" : ""}`}>
-        {number}
-      </div>
+    <div className="step">
+      <div className={`step-number ${active ? "step-active" : ""}`}>{number}</div>
       <div>
         <div className="step-title">{stepTitle}</div>
         <div className="step-info">{stepInfo}</div>
