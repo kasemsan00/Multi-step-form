@@ -90,7 +90,6 @@ export default function FormInputSection({ step, setStep }: Props) {
     return true;
   };
   const HandleNextStep = () => {
-    console.log("next");
     const isValidate = ValidateForm();
     if (isValidate) {
       setStep(step + 1);
